@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Flash Notes{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3 class="mb-0">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="row mb-4">
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="p-3">
+                            <i class="fas fa-envelope fa-3x text-primary mb-2"></i>
+                            <h6>Email</h6>
+                            <p class="text-muted">support@flashnotes.com</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="p-3">
+                            <i class="fas fa-phone fa-3x text-success mb-2"></i>
+                            <h6>Phone</h6>
+                            <p class="text-muted">+91 - 9030535996</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="p-3">
+                            <i class="fas fa-map-marker-alt fa-3x text-danger mb-2"></i>
+                            <h6>Location</h6>
+                            <p class="text-muted">Hyderabad,Telangana , INDIA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <h5 class="text-primary mb-3">Send us a message</h5>
+                
+                <form method="POST" action="{{ url_for('contact') }}">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">
+                            <i class="fas fa-user"></i> Name
+                        </label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="message" class="form-label">
+                            <i class="fas fa-comment"></i> Message
+                        </label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+                
+                <hr class="my-4">
+                
+                <div class="text-center">
+                    <h6 class="mb-3">Follow Us</h6>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-info btn-sm">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-danger btn-sm">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}About - Flash Notes{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3 class="mb-0">
+                    <i class="fas fa-info-circle"></i> About Flash Notes
+                </h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <div class="logo-placeholder mx-auto mb-3" style="width: 100px; height: 100px;">
+                        <i class="fas fa-sticky-note text-primary" style="font-size: 3rem;"></i>
+                    </div>
+                    <h4 class="text-primary">Flash Notes</h4>
+                    <p class="text-muted">Your Personal Note Management System</p>
+                </div>
+                
+                <hr>
+                
+                <h5 class="text-primary mb-3">
+                    <i class="fas fa-star"></i> Features
+                </h5>
+                <ul class="list-unstyled mb-4">
+                    <li class="mb-2">
+                        <i class="fas fa-check-circle text-success"></i>
+                        Create, edit, and delete notes easily
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check-circle text-success"></i>
+                        Organize notes by categories
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check-circle text-success"></i>
+                        Powerful search functionality
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check-circle text-success"></i>
+                        Secure user authentication with CAPTCHA
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check-circle text-success"></i>
+                        Responsive design for all devices
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check-circle text-success"></i>
+                        Clean and intuitive interface
+                    </li>
+                </ul>
+                
+                <h5 class="text-primary mb-3">
+                    <i class="fas fa-laptop-code"></i> Technologies
+                </h5>
+                <div class="row text-center mb-4">
+                    <div class="col-md-3 mb-3">
+                        <div class="p-3 bg-light rounded">
+                            <i class="fab fa-python fa-3x text-primary mb-2"></i>
+                            <p class="mb-0 fw-bold">Flask</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="p-3 bg-light rounded">
+                            <i class="fas fa-database fa-3x text-success mb-2"></i>
+                            <p class="mb-0 fw-bold">MySQL</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="p-3 bg-light rounded">
+                            <i class="fab fa-bootstrap fa-3x text-primary mb-2"></i>
+                            <p class="mb-0 fw-bold">Bootstrap</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="p-3 bg-light rounded">
+                            <i class="fas fa-lock fa-3x text-warning mb-2"></i>
+                            <p class="mb-0 fw-bold">Werkzeug</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5 class="text-primary mb-3">
+                    <i class="fas fa-shield-alt"></i> Security
+                </h5>
+                <p>
+                    Flash Notes takes your security seriously. We use industry-standard practices including:
+                </p>
+                <ul>
+                    <li>Password hashing with Werkzeug</li>
+                    <li>CAPTCHA protection against bots</li>
+                    <li>Session management</li>
+                    <li>SQL injection prevention</li>
+                </ul>
+                
+                <hr>
+                
+                <div class="text-center">
+                    <p class="text-muted mb-0">
+                        Copyright © 2025 All Rights are Reserved Developed by Vaneesh.
+                    </p>
+                    <p class="text-muted">
+                        Built with  using Flask, MySQL, and Bootstrap
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

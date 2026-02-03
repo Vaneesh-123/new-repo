@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}My Notes - Flash Notes{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="text-white">
+                <i class="fas fa-sticky-note"></i> My Notes
+            </h2>
+            <a href="{{ url_for('add_note') }}" class="btn btn-light">
+                <i class="fas fa-plus-circle"></i> Add New Note
+            </a>
+        </div>
+    </div>
+</div>
+
+{% if notes %}
+<div class="row">
+    {% for note in notes %}
+    <div class="col-md-4 mb-4">
+        <div class="card note-card h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-file-alt text-primary"></i>
+                        {{ note.title }}
+                    </h5>
+                    <span class="badge bg-primary badge-category">{{ note.category }}</span>
+                </div>
+                
+                <p class="card-text text-muted">
+                    {{ note.content[:150] }}{% if note.content|length > 150 %}...{% endif %}
+                </p>
+                
+                <div class="text-muted small mb-3">
+                    <i class="fas fa-clock"></i> 
+                    {{ note.created_at.strftime('%b %d, %Y at %I:%M %p') }}
+                </div>
+                
+                <div class="d-flex gap-2">
+                    <a href="{{ url_for('view_note', note_id=note.id) }}" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-eye"></i> View
+                    </a>
+                    <a href="{{ url_for('edit_note', note_id=note.id) }}" class="btn btn-sm btn-outline-warning">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <a href="{{ url_for('delete_note', note_id=note.id) }}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this note?')">
+                        <i class="fas fa-trash"></i> Delete
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <i class="fas fa-sticky-note fa-5x text-muted mb-3"></i>
+                <h4 class="text-muted">No notes yet</h4>
+                <p class="text-muted">Start creating your first note!</p>
+                <a href="{{ url_for('add_note') }}" class="btn btn-primary mt-3">
+                    <i class="fas fa-plus-circle"></i> Create Your First Note
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Flash Notes{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <div class="logo-placeholder mx-auto mb-2" style="width: 60px; height: 60px;">
+                    <i class="fas fa-sticky-note text-primary fa-2x"></i>
+                </div>
+                <h4 class="mb-0">Login</h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('login') }}">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">
+                            <i class="fas fa-user"></i> Username
+                        </label>
+                        <input type="text" class="form-control" id="username" name="username" required autofocus>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fas fa-shield-alt"></i> CAPTCHA
+                        </label>
+                        <div class="text-center mb-2">
+                            <img src="{{ url_for('captcha') }}" id="captchaImage" alt="CAPTCHA" class="img-fluid border rounded">
+                            <button type="button" class="btn btn-link btn-sm" onclick="refreshCaptcha()" title="Refresh CAPTCHA">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control" id="captcha" name="captcha" placeholder="Enter CAPTCHA" required>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                        <label class="form-check-label" for="remember">
+                            Remember me
+                        </label>
+                    </div>
+                    
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="{{ url_for('forgot_password') }}" class="text-decoration-none">
+                            <i class="fas fa-question-circle"></i> Forgot Password?
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center bg-light">
+                Don't have an account?
+                <a href="{{ url_for('register') }}" class="text-decoration-none fw-bold">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

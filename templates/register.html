@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Flash Notes{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header text-center">
+                <div class="logo-placeholder mx-auto mb-2" style="width: 60px; height: 60px;">
+                    <i class="fas fa-user-plus text-primary fa-2x"></i>
+                </div>
+                <h4 class="mb-0">Create Account</h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('register') }}">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">
+                            <i class="fas fa-user"></i> Username
+                        </label>
+                        <input type="text" class="form-control" id="username" name="username" required autofocus>
+                        <div class="form-text">Choose a unique username (3-50 characters)</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <div class="form-text">Minimum 6 characters</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">
+                            <i class="fas fa-lock"></i> Confirm Password
+                        </label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fas fa-shield-alt"></i> CAPTCHA
+                        </label>
+                        <div class="text-center mb-2">
+                            <img src="{{ url_for('captcha') }}" id="captchaImage" alt="CAPTCHA" class="img-fluid border rounded">
+                            <button type="button" class="btn btn-link btn-sm" onclick="refreshCaptcha()" title="Refresh CAPTCHA">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control" id="captcha" name="captcha" placeholder="Enter CAPTCHA" required>
+                    </div>
+                    
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center bg-light">
+                Already have an account?
+                <a href="{{ url_for('login') }}" class="text-decoration-none fw-bold">Login</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Password match validation
+    document.getElementById('confirm_password').addEventListener('input', function() {
+        var password = document.getElementById('password').value;
+        var confirm = this.value;
+        
+        if (password !== confirm) {
+            this.setCustomValidity('Passwords do not match');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+</script>
+{% endblock %}
