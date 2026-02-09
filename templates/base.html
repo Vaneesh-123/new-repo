@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,6 +146,16 @@
 <div class="container main-container flex-grow-1">
     {% block content %}{% endblock %}
 </div>
+
+<script>
+function refreshCaptcha() {
+    const img = document.getElementById("captchaImage");
+    if (img) {
+        img.src = "{{ url_for('captcha') }}?" + new Date().getTime();
+    }
+}
+</script>
+
 
 <!-- FOOTER -->
 <footer class="footer text-center">

@@ -8,6 +8,7 @@ from flask_mail import Mail, Message
 from datetime import datetime, timedelta
 import io
 import os
+import sqlite3
 
 
 app = Flask(__name__)
@@ -27,9 +28,11 @@ mail = Mail(app)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "database.db")
 
+
+
 def get_db():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row   # ✅ VERY IMPORTANT
     return conn
 
 # ---------- CAPTCHA ----------
@@ -290,7 +293,14 @@ def profile():
     note_count = cur.fetchone()[0]
 
     conn.close()
-    return render_template('profile.html', user=user, note_count=note_count)
+
+    return render_template(
+        'profile.html',
+        user=user,
+        note_count=note_count
+    )
+
+
 
 # ---------- SEARCH ----------
 @app.route("/search")
